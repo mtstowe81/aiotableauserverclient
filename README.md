@@ -1,5 +1,5 @@
 # aiotableauserverclient
-Implementation of tableauserverclient API using asynio following the API conventions of the `tableauserverclient` library implemented by Tableau.
+Implementation of [tableauserverclient](https://github.com/tableau/server-client-python) API using asynio following the API conventions of the `tableauserverclient` library implemented by Tableau.
 
 Using the `/subscriptions` endpoint of Tableau as an example typical usage, per their documentation is as follows.
 
