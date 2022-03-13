@@ -1,0 +1,2 @@
+tableauserverclient==0.15.0
+aiohttp[speedups]==3.8.1
