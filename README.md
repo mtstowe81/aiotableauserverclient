@@ -41,14 +41,12 @@ In such cases an async pattern can be applied when following the above conventio
 This maintains an almost identical experience to the original library, except introducing `async/await`.
 
 
-url: str, username: str, password: str, site_id: str, api_ver: str
-
 ```
 import aiotableauserverclient as TSC
 server = TSC.TableauClientAsync('https://SERVER_URL','USERNAME', 'PASSWORD', site_id='CONTENTURL', api_ver='API_VERSION')
 
 # Initialize the client connection and auth.
-await server.init()
+await server.sign_in()
 
 # Create the target (content) of the subscription with its ID and type.
 # ID can be obtained by calling workbooks.get() or views.get().
@@ -74,5 +72,5 @@ new_sub.send_if_view_empty = True
 new_sub = await server.subscriptions.create(new_sub)
 
 # Cleanup the client connection/etc
-await server.term()
+await server.close()
 ```

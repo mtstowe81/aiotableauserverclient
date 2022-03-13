@@ -43,18 +43,17 @@ class TableauClientAsync():
         return TableauUsersEndpointAsync(self)
 
     async def refresh_auth(self):
-        async with self.__tableau_lock.reader_lock:
-            response = await self.__tableau_client.post(
-                self.__get_url("/auth/signin"),
-                json=self.__tableau_auth_body,
-                headers=self.__tableau_auth_headers,
-            )
+        response = await self.__tableau_client.post(
+            self.__get_url("/auth/signin"),
+            json=self.__tableau_auth_body,
+            headers=self.__tableau_auth_headers,
+        )
         self.__tableau_auth_response = await response.json()
 
-    async def init(self):
+    async def sign_in(self):
         await self.refresh_auth()
 
-    async def term(self):
+    async def close(self):
         await self.__tableau_client.close()
 
     async def get_request(self, url: str):
